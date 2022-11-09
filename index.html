@@ -16,15 +16,103 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2
-						<aside class="notes">
-						<p>Some notes</p>
-						</aside>
-						<p>Some slide text</p>
-						<aside class="notes">
-						<p>and some more notes</p>
-					</aside>
+				<section>
+					<h1>JD's 2022 q3 hackathon project</h1>
+					<p>welcome</p>
+				</section>
+				<section>
+					<h3>which project?</h3>
+					<img src='/img/Screen Shot 2022-11-03 at 12.07.27 PM.png'/>
+				</section>
+				<section>
+					<!--
+						- we def need to run all our FE end-to-end tests on merge to master
+						- but likely not on every PR
+					-->
+					<h3>why?</h3>
+					<img width='800' src='/img/Screen Shot 2022-11-03 at 3.04.07 PM.png' />
+				</section>
+				<section>
+					<!--
+						- quality of life improvement
+					-->
+					<h3>why not?</h3>
+					<img width='800' src='/img/Screen Shot 2022-11-03 at 3.12.02 PM.png' />
+				</section>
+				<section>
+					<!-- small new job that runs before testing -->
+					<h3>how?</h3>
+					<img src='/img/Screen Shot 2022-11-03 at 3.24.44 PM.png' />
+				</section>
+				<section>
+					<!-- small new job that runs before testing -->
+					<h4>step 1</h4>
+					<ul>
+						<li>get the diff files by name</li>
+						<li>store their category basename (file structure)</li>
+						<ul>
+							<li>e.g. 
+								<pre><code data-trim data-noescape>
+										src/routes/account
+								</code></pre>
+								or
+								<pre><code data-trim data-noescape>
+										src/routes/admin
+								</code></pre>
+							</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h4>step 2</h4>
+					<ul>
+						<li>find all the tests that have categorizing comments</li>
+						<ul>
+							<small><li>requires some opt-in</li></small>
+						</ul>
+						<pre><code class="language-js" data-trim data-noescape>
+							// relevant: src/routes/admin
+							import { assertPermissionsTooltipPresent } from '../helpers';
+							
+							describe('general organization settings', () => {
+								it('loads correctly', () => {
+									cy.setFeatureFlag('alter-shared-bundle-expiration', true).visit(
+										'/my-org/admin/settings',
+									);
+							
+									cy.bniId('OrgSettingsPage').takeScreenshot();
+								});
+							
+								it('can edit the organization name', () => {
+									cy.visit('/my-org/admin/settings');
+							
+									cy.get('input[name="name"]').type('{selectall}New Organization Name');
+									cy.getButton('Update').click();
+							
+									cy.getToast('Organization name changed');
+								});
+
+								// ...
+						</code></pre>
+					</ul>
+				</section>
+				<section>
+					<!-- 
+						- running all the tests in the category could result in over-testing
+						- but way way way less than before
+						- this is probably the minimum required to make sure the relevant tests to a pr are ran
+					 -->
+					<h4>step 3</h4>
+					<ul>
+						<li>run those tests!</li>
+					</ul>
+				</section>
+				<section>
+					<img width='500' src='img/Screen Shot 2022-11-01 at 12.02.29 PM.png' />
+				</section>
+				<section>
+					<p>thank you</p>
+					<img width='400' src='img/tmp.gif'
 				</section>
 			</div>
 		</div>
