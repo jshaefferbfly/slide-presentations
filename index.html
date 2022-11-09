@@ -16,15 +16,60 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2
-						<aside class="notes">
-						<p>Some notes</p>
-						</aside>
-						<p>Some slide text</p>
-						<aside class="notes">
-						<p>and some more notes</p>
-					</aside>
+				<section>
+					<h1>web sockets</h1>
+					<p>what/why/how/where</p>
+				</section>
+				<section>
+					<h3>what</h3>
+					<ul>
+						<li>
+							a computer communications protocol
+						</li>
+						<li>
+							full-duplex channels over a single TCP connection
+							<!-- telecommuncications term - basically meaning 2 people can
+							talk/send messages at the same time -->
+						</li>
+						<li>
+							tl;dr a two way connection between a client and server
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>why</h3>
+					<ul>
+						<li>
+							real-time communication!
+						</li>
+						<li>
+							no need to refresh to get updates
+						</li>
+						<li>
+							better than polling (depending on the use-case of course)
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>how</h3>
+					<ol>
+						<li>
+							client sends http request to server to open connection
+						</li>
+						<li>
+							server agrees, sends 101 Switching Protocols response
+						</li>
+						<li>
+							handshake is created, TCP/IP connection is left open
+						</li>
+						<li>
+							bi-directional messages go back and forth
+						</li>
+					</ol>
+				</section>
+				<section>
+					<img width="400" src='/img/Websocket_connection.png' />
+					<small>By Brivadeneira - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=82810859</small>
 				</section>
 			</div>
 		</div>
